@@ -1,3 +1,11 @@
 export function App() {
-  return <h1>Hello world</h1>
+  return (
+    <>
+      <div
+        className={`bg-no-repeat bg-cover bg-left-top h-[185px] bg-[url(./assets/background.png)]`}
+      />
+
+      <main></main>
+    </>
+  )
 }
