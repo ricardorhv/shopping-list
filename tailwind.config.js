@@ -32,7 +32,7 @@ export default {
           dark: '#251622',
         },
 
-        onratechange: {
+        orange: {
           light: '#E07B67',
           dark: '#261A17',
         },
