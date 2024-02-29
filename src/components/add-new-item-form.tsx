@@ -4,11 +4,11 @@ import { SelectUnit } from './select-unit'
 
 export function AddNewItemForm() {
   return (
-    <form className="grid grid-cols-[320px_150px_160px_40px] items-end gap-3 text-gray-100 leading-none text-sm">
+    <form className="grid grid-cols-[1fr_150px_160px_40px] items-end gap-3 text-gray-100 leading-none text-sm">
       <div className="has-[input:focus]:text-purple-light flex flex-col gap-2">
         <label htmlFor="item">Item</label>
         <input
-          className="text-sm leading-none text-gray-100 rounded-md outline-none border border-1 border-gray-300 bg-gray-500 p-3 focus:border-purple-light"
+          className="text-sm h-10 leading-none text-gray-100 rounded-md outline-none border border-1 border-gray-300 bg-gray-500 p-3 focus:border-purple-light"
           id="item"
           type="text"
         />
@@ -34,7 +34,7 @@ export function AddNewItemForm() {
         <SelectCategory />
       </div>
 
-      <button className="p-2 rounded-full bg-purple-default outline-none border-none flex justify-center items-center leading-none cursor-pointer hover:bg-purple-dark">
+      <button className="p-2 rounded-full bg-purple-default outline-none border-none flex justify-center items-center self-end leading-none cursor-pointer hover:bg-purple-dark">
         <Plus className="size-6" />
       </button>
     </form>

@@ -1,4 +1,5 @@
 import { AddNewItemForm } from './components/add-new-item-form'
+import { Item } from './components/item'
 
 export function App() {
   return (
@@ -13,6 +14,12 @@ export function App() {
         </h1>
 
         <AddNewItemForm />
+
+        <ul className="space-y-3">
+          {Array.from({ length: 4 }).map((_, index) => {
+            return <Item key={index} />
+          })}
+        </ul>
       </main>
     </>
   )
