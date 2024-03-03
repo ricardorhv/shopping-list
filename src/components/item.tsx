@@ -1,6 +1,7 @@
 import * as Checkbox from '@radix-ui/react-checkbox'
 import { TagCategory } from './tag-category'
-import { Apple, Check, MoreVertical } from 'lucide-react'
+import { Apple, Check } from 'lucide-react'
+import { SettingsPopover } from './settings-popover'
 
 export function Item() {
   return (
@@ -27,13 +28,12 @@ export function Item() {
       <div className="flex items-center gap-3">
         <TagCategory
           category="Fruta"
-          color="orange"
+          backgroundColor="bg-orange-dark"
+          textColor="text-orange-light"
           icon={<Apple className="size-4 text-orange-light" />}
         />
 
-        <button className="border-none outline-none focus-visible:outline-1 focus-visible:outline-purple-light bg-transparent flex justify-center items-center leading-none">
-          <MoreVertical className="size-5 text-purple-light" />
-        </button>
+        <SettingsPopover />
       </div>
     </li>
   )
