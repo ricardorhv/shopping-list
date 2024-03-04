@@ -52,7 +52,7 @@ export function SelectCategory() {
 
       <Select.Root onOpenChange={handleChangeSelectOpened}>
         <Select.Trigger
-          className={`h-10 text-sm leading-none text-gray-100 data-[placeholder]:text-gray-200 outline-none rounded-md bg-gray-400 border border-1 p-3 flex items-center justify-between gap-3 focus:border-purple-light ${isSelectOpened ? 'border-purple-light' : 'border-gray-300'}`}
+          className={`h-10 w-[160px] text-sm leading-none text-gray-100 data-[placeholder]:text-gray-200 outline-none rounded-md bg-gray-400 border border-1 p-3 flex items-center justify-between gap-3 focus:border-purple-light ${isSelectOpened ? 'border-purple-light' : 'border-gray-300'}`}
         >
           <Select.Value placeholder="Selecione"></Select.Value>
           <Select.Icon>
