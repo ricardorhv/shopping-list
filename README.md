@@ -1,9 +1,9 @@
 # To do
 
-- [] Criar context API e encapsular o APP
-- [] Criar função de adicionar item
+- [X] Criar context API e encapsular o APP
+- [X] Criar função de adicionar item
+- [X] Criar função de deletar item
 - [] Criar função de alterar item
-- [] Criar função de deletar item
 
 - [] Usar zod e react-hook-form para validação
 - [] Deploy

@@ -1,3 +1,4 @@
+import { useFormContext } from 'react-hook-form'
 import { twMerge } from 'tailwind-merge'
 
 interface ItemInputProps {
@@ -5,6 +6,8 @@ interface ItemInputProps {
 }
 
 export function ItemInput({ className }: ItemInputProps) {
+  const { register } = useFormContext()
+
   return (
     <div
       className={twMerge(
@@ -17,6 +20,7 @@ export function ItemInput({ className }: ItemInputProps) {
         className="text-sm h-10 leading-none text-gray-100 rounded-md outline-none border border-1 border-gray-300 bg-gray-500 p-3 focus:border-purple-light"
         id="item"
         type="text"
+        {...register('name')}
       />
     </div>
   )

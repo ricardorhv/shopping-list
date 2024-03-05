@@ -1,6 +1,9 @@
+import { useFormContext } from 'react-hook-form'
 import { SelectUnit } from '../select-unit'
 
 export function QuantityInput() {
+  const { register } = useFormContext()
+
   return (
     <div className="has-[input:focus]:text-purple-light has-[button:focus]:text-purple-light flex flex-col gap-2">
       <label htmlFor="quantity">Quantidade</label>
@@ -11,6 +14,7 @@ export function QuantityInput() {
           id="quantity"
           type="number"
           defaultValue={1}
+          {...register('quantity', { valueAsNumber: true })}
         />
 
         <SelectUnit />
