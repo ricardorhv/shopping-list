@@ -2,7 +2,7 @@ export interface ShoppingList {
   id?: string
   name: string
   quantity: number
-  unit: string
-  category: string
+  unit: 'unit' | 'liter' | 'kilogram'
+  category: 'vegetable' | 'fruit' | 'drink' | 'bakery'
   isChecked: boolean
 }

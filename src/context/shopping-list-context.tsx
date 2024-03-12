@@ -7,6 +7,8 @@ interface ShoppingListContextProps {
 
 interface ShoppingListContext {
   shoppingList: ShoppingList[]
+  addNewItemToTheShoppingList: (newItem: ShoppingList) => void
+  removeItemFromTheShoppingList: (id: string) => void
 }
 
 export const ShoppingListContext = createContext<ShoppingListContext>(
@@ -33,7 +35,13 @@ export function ShoppingListContextProvider({
   }
 
   return (
-    <ShoppingListContext.Provider value={{ shoppingList }}>
+    <ShoppingListContext.Provider
+      value={{
+        shoppingList,
+        addNewItemToTheShoppingList,
+        removeItemFromTheShoppingList,
+      }}
+    >
       {children}
     </ShoppingListContext.Provider>
   )

@@ -25,11 +25,17 @@ export function AddNewItemForm() {
     },
   })
 
-  const { handleSubmit } = methods
+  const { handleSubmit, reset } = methods
 
-  // const {  } = useShoppingList()
+  const { addNewItemToTheShoppingList } = useShoppingList()
 
-  function handleAddNewItem(data: FormSchemaType) { }
+  function handleAddNewItem(data: FormSchemaType) {
+    addNewItemToTheShoppingList({
+      ...data,
+      isChecked: false,
+    })
+    reset()
+  }
 
   return (
     <FormProvider {...methods}>
