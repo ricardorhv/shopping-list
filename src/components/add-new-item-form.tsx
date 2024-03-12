@@ -6,12 +6,13 @@ import { FormProvider, useForm } from 'react-hook-form'
 
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
+import { useShoppingList } from '../hooks/use-shopping-list'
 
 const formSchema = z.object({
-  name: z.string(),
-  quantity: z.number(),
-  unit: z.string(),
-  category: z.string(),
+  name: z.string().min(3),
+  quantity: z.number().positive(),
+  unit: z.enum(['unit', 'liter', 'kilogram']),
+  category: z.enum(['vegetable', 'fruit', 'drink', 'bakery']),
 })
 
 type FormSchemaType = z.infer<typeof formSchema>
@@ -26,9 +27,9 @@ export function AddNewItemForm() {
 
   const { handleSubmit } = methods
 
-  function handleAddNewItem(data: FormSchemaType) {
-    console.log(data)
-  }
+  // const {  } = useShoppingList()
+
+  function handleAddNewItem(data: FormSchemaType) { }
 
   return (
     <FormProvider {...methods}>

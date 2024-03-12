@@ -9,12 +9,13 @@ interface ShoppingListContext {
   shoppingList: ShoppingList[]
 }
 
+export const ShoppingListContext = createContext<ShoppingListContext>(
+  {} as ShoppingListContext,
+)
+
 export function ShoppingListContextProvider({
   children,
 }: ShoppingListContextProps) {
-  const shoppingListContext = createContext<ShoppingListContext>(
-    {} as ShoppingListContext,
-  )
   const [shoppingList, setShoppingList] = useState<ShoppingList[]>([])
 
   function addNewItemToTheShoppingList(newItem: ShoppingList) {
@@ -32,8 +33,8 @@ export function ShoppingListContextProvider({
   }
 
   return (
-    <shoppingListContext.Provider value={{ shoppingList }}>
+    <ShoppingListContext.Provider value={{ shoppingList }}>
       {children}
-    </shoppingListContext.Provider>
+    </ShoppingListContext.Provider>
   )
 }
