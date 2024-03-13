@@ -4,7 +4,11 @@ import { useState } from 'react'
 import { Controller, useFormContext } from 'react-hook-form'
 import { categories } from '../../data/categories'
 
-export function SelectCategory() {
+interface SelectCategoryProps {
+  nameField?: string
+}
+
+export function SelectCategory({ nameField }: SelectCategoryProps) {
   const [isSelectOpened, setIsSelectOpened] = useState(false)
 
   const { control } = useFormContext()
@@ -19,7 +23,7 @@ export function SelectCategory() {
 
       <Controller
         control={control}
-        name="category"
+        name={nameField ?? 'category'}
         render={({ field: { onChange, value } }) => (
           <Select.Root
             onValueChange={onChange}

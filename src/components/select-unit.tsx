@@ -4,7 +4,11 @@ import { useState } from 'react'
 import { Controller, useFormContext } from 'react-hook-form'
 import { units } from '../data/units'
 
-export function SelectUnit() {
+interface SelectUnitProps {
+  nameField?: string
+}
+
+export function SelectUnit({ nameField }: SelectUnitProps) {
   const [isSelectOpened, setIsSelectOpened] = useState(false)
 
   const { control } = useFormContext()
@@ -16,7 +20,7 @@ export function SelectUnit() {
   return (
     <Controller
       control={control}
-      name="unit"
+      name={nameField ?? 'unit'}
       render={({ field: { onChange, value } }) => (
         <Select.Root
           onOpenChange={handleChangeSelectOpened}

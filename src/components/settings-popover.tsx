@@ -26,7 +26,7 @@ export function SettingsPopover({ itemId }: SettingsPopoverProps) {
 
       <Popover.Portal>
         <Popover.Content className="bg-gray-500 rounded-md w-[100px]">
-          <EditModal />
+          <EditModal itemId={itemId} />
 
           <AlertDialog.Root>
             <AlertDialog.Trigger className="px-3 py-2 w-full text-gray-100 text-left text-sm hover:bg-gray-400 rounded-b-md outline-none border border-gray-400 hover:border-purple-light focus-visible:border-purple-light">

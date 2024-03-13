@@ -1,7 +1,11 @@
 import { useFormContext } from 'react-hook-form'
 import { SelectUnit } from '../select-unit'
 
-export function QuantityInput() {
+interface QuantityInputProps {
+  nameField?: string
+}
+
+export function QuantityInput({ nameField }: QuantityInputProps) {
   const { register } = useFormContext()
 
   return (
@@ -14,10 +18,10 @@ export function QuantityInput() {
           id="quantity"
           type="number"
           defaultValue={1}
-          {...register('quantity', { valueAsNumber: true })}
+          {...register(nameField ?? 'quantity', { valueAsNumber: true })}
         />
 
-        <SelectUnit />
+        <SelectUnit nameField={nameField ? 'unitEdit' : undefined} />
       </div>
     </div>
   )
