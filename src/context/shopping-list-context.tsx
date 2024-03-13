@@ -10,6 +10,7 @@ interface ShoppingListContext {
   addNewItemToTheShoppingList: (newItem: ShoppingList) => void
   removeItemFromTheShoppingList: (id: string) => void
   editItem: (itemEdited: ShoppingList) => void
+  checkItem: (checked: boolean, itemId: string) => void
 }
 
 export const ShoppingListContext = createContext<ShoppingListContext>(
@@ -47,6 +48,21 @@ export function ShoppingListContextProvider({
     })
   }
 
+  function checkItem(checked: boolean, itemId: string) {
+    setShoppingList((prevState) => {
+      return prevState.map((item) => {
+        if (item.id === itemId) {
+          return {
+            ...item,
+            isChecked: checked,
+          }
+        }
+
+        return item
+      })
+    })
+  }
+
   return (
     <ShoppingListContext.Provider
       value={{
@@ -54,6 +70,7 @@ export function ShoppingListContextProvider({
         addNewItemToTheShoppingList,
         removeItemFromTheShoppingList,
         editItem,
+        checkItem,
       }}
     >
       {children}
