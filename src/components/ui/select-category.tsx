@@ -1,49 +1,13 @@
 import * as Select from '@radix-ui/react-select'
-import {
-  Apple,
-  Beef,
-  CakeSlice,
-  Carrot,
-  Check,
-  ChevronDown,
-  ChevronUp,
-  Milk,
-} from 'lucide-react'
+import { Check, ChevronDown, ChevronUp } from 'lucide-react'
 import { useState } from 'react'
 import { Controller, useFormContext } from 'react-hook-form'
+import { categories } from '../../data/categories'
 
 export function SelectCategory() {
   const [isSelectOpened, setIsSelectOpened] = useState(false)
 
   const { control } = useFormContext()
-
-  const categories = [
-    {
-      icon: <CakeSlice className="size-4 text-yellow-light" />,
-      label: 'Padaria',
-      value: 'bakery',
-    },
-    {
-      icon: <Carrot className="size-4 text-green-light" />,
-      label: 'Legume',
-      value: 'vegetable',
-    },
-    {
-      icon: <Beef className="size-4 text-pink-light" />,
-      value: 'meat',
-      label: 'Carne',
-    },
-    {
-      icon: <Apple className="size-4 text-orange-light" />,
-      value: 'fruit',
-      label: 'Fruta',
-    },
-    {
-      icon: <Milk className="size-4 text-blue-light" />,
-      value: 'drink',
-      label: 'Bebida',
-    },
-  ]
 
   function handleChangeSelectOpened(open: boolean) {
     setIsSelectOpened(open)
@@ -56,10 +20,11 @@ export function SelectCategory() {
       <Controller
         control={control}
         name="category"
-        render={({ field: { onChange } }) => (
+        render={({ field: { onChange, value } }) => (
           <Select.Root
             onValueChange={onChange}
             onOpenChange={handleChangeSelectOpened}
+            value={value}
           >
             <Select.Trigger
               className={`h-10 w-[160px] text-sm leading-none text-gray-100 data-[placeholder]:text-gray-200 outline-none rounded-md bg-gray-400 border border-1 p-3 flex items-center justify-between gap-3 focus:border-purple-light ${isSelectOpened ? 'border-purple-light' : 'border-gray-300'}`}
@@ -94,7 +59,11 @@ export function SelectCategory() {
                       >
                         <Select.ItemText>
                           <div className="flex gap-2 items-center">
-                            {category.icon}
+                            {
+                              <category.icon
+                                className={`size-4 ${category.textColor}`}
+                              />
+                            }
                             <span>{category.label}</span>
                           </div>
                         </Select.ItemText>

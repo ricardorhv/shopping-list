@@ -1,7 +1,10 @@
 import { AddNewItemForm } from './components/add-new-item-form'
 import { Item } from './components/item'
+import { useShoppingList } from './hooks/use-shopping-list'
 
 export function App() {
+  const { shoppingList } = useShoppingList()
+
   return (
     <>
       <div
@@ -16,9 +19,9 @@ export function App() {
         <AddNewItemForm />
 
         <ul className="space-y-3">
-          {Array.from({ length: 4 }).map((_, index) => {
-            return <Item key={index} />
-          })}
+          {shoppingList.map((item) => (
+            <Item key={item.id} {...item} />
+          ))}
         </ul>
       </main>
     </>

@@ -2,26 +2,12 @@ import * as Select from '@radix-ui/react-select'
 import { Check, ChevronDown, ChevronUp } from 'lucide-react'
 import { useState } from 'react'
 import { Controller, useFormContext } from 'react-hook-form'
+import { units } from '../data/units'
 
 export function SelectUnit() {
   const [isSelectOpened, setIsSelectOpened] = useState(false)
 
   const { control } = useFormContext()
-
-  const units = [
-    {
-      value: 'unit',
-      label: 'Un.',
-    },
-    {
-      value: 'liter',
-      label: 'L',
-    },
-    {
-      value: 'kilogram',
-      label: 'Kg',
-    },
-  ]
 
   function handleChangeSelectOpened(open: boolean) {
     setIsSelectOpened(open)
@@ -34,8 +20,8 @@ export function SelectUnit() {
       render={({ field: { onChange, value } }) => (
         <Select.Root
           onOpenChange={handleChangeSelectOpened}
-          defaultValue={value}
           onValueChange={onChange}
+          value={value}
         >
           <Select.Trigger className="w-[72px] h-10 text-xs leading-none text-gray-200 outline-none rounded-e-md bg-gray-400 border border-1 border-gray-300 p-3 flex items-center justify-between focus:border-purple-light">
             <Select.Value></Select.Value>
@@ -66,7 +52,7 @@ export function SelectUnit() {
                       key={unit.value}
                       value={unit.value}
                     >
-                      <Select.ItemText>{unit.label}</Select.ItemText>
+                      <Select.ItemText>{unit.label.short}</Select.ItemText>
                       <Select.ItemIndicator className="text-purple-light">
                         <Check className="size-3" />
                       </Select.ItemIndicator>

@@ -1,9 +1,28 @@
 import * as Checkbox from '@radix-ui/react-checkbox'
 import { TagCategory } from './tag-category'
-import { Apple, Check } from 'lucide-react'
+import { Check } from 'lucide-react'
 import { SettingsPopover } from './settings-popover'
+import { ShoppingList } from '../@types/shopping-list'
+import { categories } from '../data/categories'
+import { units } from '../data/units'
 
-export function Item() {
+export function Item({
+  name,
+  isChecked,
+  category: categoryValue,
+  quantity,
+  unit: unitValue,
+}: ShoppingList) {
+  const category = categories.find(
+    (category) => category.value === categoryValue,
+  ) as (typeof categories)[number]
+
+  const unit = units.find(
+    (unit) => unit.value === unitValue,
+  ) as (typeof units)[number]
+
+  const isQuantityMajorThanOne = quantity > 1
+
   return (
     <li className="bg-gray-400 border border-1 border-gray-300 rounded-lg p-4 flex items-center justify-between">
       <div className="flex items-center gap-4">
@@ -20,17 +39,20 @@ export function Item() {
           htmlFor="checked"
           className="flex flex-col gap-[2px] leading-tight"
         >
-          <strong className="text-gray-100">Maça</strong>
-          <span className="text-gray-200 text-sm">2 unidades</span>
+          <strong className="text-gray-100">{name}</strong>
+          <span className="text-gray-200 text-sm">
+            {quantity} {unit.label.default}
+            {isQuantityMajorThanOne && 's'}
+          </span>
         </label>
       </div>
 
       <div className="flex items-center gap-3">
         <TagCategory
-          category="Fruta"
-          backgroundColor="bg-orange-dark"
-          textColor="text-orange-light"
-          icon={<Apple className="size-4 text-orange-light" />}
+          category={category?.label}
+          backgroundColor={category?.bgColor}
+          textColor={category?.textColor}
+          icon={<category.icon className={`size-4 ${category.textColor}`} />}
         />
 
         <SettingsPopover />

@@ -7,12 +7,20 @@ import { FormProvider, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { useShoppingList } from '../hooks/use-shopping-list'
+import { units } from '../data/units'
+import { categories } from '../data/categories'
 
 const formSchema = z.object({
   name: z.string().min(3),
   quantity: z.number().positive(),
-  unit: z.enum(['unit', 'liter', 'kilogram']),
-  category: z.enum(['vegetable', 'fruit', 'drink', 'bakery']),
+  unit: z.nativeEnum(
+    Object.fromEntries(units.map((unit) => [unit.value, unit.value])),
+  ),
+  category: z.nativeEnum(
+    Object.fromEntries(
+      categories.map((category) => [category.value, category.value]),
+    ),
+  ),
 })
 
 type FormSchemaType = z.infer<typeof formSchema>
@@ -22,6 +30,7 @@ export function AddNewItemForm() {
     resolver: zodResolver(formSchema),
     defaultValues: {
       unit: 'unit',
+      category: undefined,
     },
   })
 
@@ -34,7 +43,11 @@ export function AddNewItemForm() {
       ...data,
       isChecked: false,
     })
-    reset()
+    reset({
+      name: '',
+      quantity: 1,
+      unit: 'unit',
+    })
   }
 
   return (

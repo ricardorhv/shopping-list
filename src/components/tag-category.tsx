@@ -1,5 +1,4 @@
 import { ReactNode } from 'react'
-import { twMerge } from 'tailwind-merge'
 
 interface TagCategoryProps {
   icon: ReactNode
