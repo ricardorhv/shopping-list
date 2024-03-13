@@ -3,8 +3,19 @@ import * as AlertDialog from '@radix-ui/react-alert-dialog'
 
 import { MoreVertical } from 'lucide-react'
 import { EditModal } from './edit-modal'
+import { useShoppingList } from '../hooks/use-shopping-list'
 
-export function SettingsPopover() {
+interface SettingsPopoverProps {
+  itemId: string
+}
+
+export function SettingsPopover({ itemId }: SettingsPopoverProps) {
+  const { removeItemFromTheShoppingList } = useShoppingList()
+
+  function handleRemoveItemFromShoppingList() {
+    removeItemFromTheShoppingList(itemId)
+  }
+
   return (
     <Popover.Root>
       <Popover.Trigger asChild>
@@ -35,7 +46,10 @@ export function SettingsPopover() {
                     Cancelar
                   </AlertDialog.Cancel>
 
-                  <AlertDialog.Action className="rounded-md font-semibold text-white px-4 py-2 text-sm bg-red-600 hover:bg-red-700">
+                  <AlertDialog.Action
+                    onClick={handleRemoveItemFromShoppingList}
+                    className="rounded-md font-semibold text-white px-4 py-2 text-sm bg-red-600 hover:bg-red-700"
+                  >
                     Excluir
                   </AlertDialog.Action>
                 </div>

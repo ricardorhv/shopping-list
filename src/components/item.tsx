@@ -12,6 +12,7 @@ export function Item({
   category: categoryValue,
   quantity,
   unit: unitValue,
+  id,
 }: ShoppingList) {
   const category = categories.find(
     (category) => category.value === categoryValue,
@@ -55,7 +56,7 @@ export function Item({
           icon={<category.icon className={`size-4 ${category.textColor}`} />}
         />
 
-        <SettingsPopover />
+        <SettingsPopover itemId={id!} />
       </div>
     </li>
   )
