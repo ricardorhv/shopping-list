@@ -4,5 +4,5 @@
 - [X] Exibir os items
 - [X] Criar função para deletar item
 - [X] Criar função para alterar item
-- [] Definir como item checado quando usuário clicar no checkbox
+- [X] Definir como item checado quando usuário clicar no checkbox
 - [] Salvar dados no LS

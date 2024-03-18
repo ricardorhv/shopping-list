@@ -20,47 +20,74 @@ export const ShoppingListContext = createContext<ShoppingListContext>(
 export function ShoppingListContextProvider({
   children,
 }: ShoppingListContextProps) {
-  const [shoppingList, setShoppingList] = useState<ShoppingList[]>([])
+  const [shoppingList, setShoppingList] = useState<ShoppingList[]>(
+    () => JSON.parse(localStorage.getItem('shoppingList')!) ?? [],
+  )
 
   function addNewItemToTheShoppingList(newItem: ShoppingList) {
-    setShoppingList((prevState) => [
+    const shoppingListWithNewItem = [
       {
         ...newItem,
         id: crypto.randomUUID(),
       },
-      ...prevState,
-    ])
+      ...shoppingList,
+    ]
+
+    setShoppingList(shoppingListWithNewItem)
+
+    localStorage.setItem(
+      'shoppingList',
+      JSON.stringify(shoppingListWithNewItem),
+    )
   }
 
   function removeItemFromTheShoppingList(id: string) {
-    setShoppingList((prevState) => prevState.filter((item) => item.id !== id))
+    const shoppingListWithoutTheItem = shoppingList.filter(
+      (item) => item.id !== id,
+    )
+    setShoppingList(shoppingListWithoutTheItem)
+
+    localStorage.setItem(
+      'shoppingList',
+      JSON.stringify(shoppingListWithoutTheItem),
+    )
   }
 
   function editItem(itemEdited: ShoppingList) {
-    setShoppingList((prevState) => {
-      return prevState.map((item) => {
-        if (item.id === itemEdited.id) {
-          return itemEdited
-        }
+    const shoppingListWithEditedItem = shoppingList.map((item) => {
+      if (item.id === itemEdited.id) {
+        return itemEdited
+      }
 
-        return item
-      })
+      return item
     })
+
+    setShoppingList(shoppingListWithEditedItem)
+
+    localStorage.setItem(
+      'shoppingList',
+      JSON.stringify(shoppingListWithEditedItem),
+    )
   }
 
   function checkItem(checked: boolean, itemId: string) {
-    setShoppingList((prevState) => {
-      return prevState.map((item) => {
-        if (item.id === itemId) {
-          return {
-            ...item,
-            isChecked: checked,
-          }
+    const shoppingListWithCheckedItem = shoppingList.map((item) => {
+      if (item.id === itemId) {
+        return {
+          ...item,
+          isChecked: checked,
         }
+      }
 
-        return item
-      })
+      return item
     })
+
+    setShoppingList(shoppingListWithCheckedItem)
+
+    localStorage.setItem(
+      'shoppingList',
+      JSON.stringify(shoppingListWithCheckedItem),
+    )
   }
 
   return (

@@ -46,6 +46,7 @@ export function AddNewItemForm() {
         name: '',
         quantity: 1,
         unit: 'unit',
+        category: 'bakery',
       })
     }
   }
