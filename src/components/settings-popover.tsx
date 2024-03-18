@@ -36,7 +36,7 @@ export function SettingsPopover({ itemId }: SettingsPopoverProps) {
             <AlertDialog.Portal>
               <AlertDialog.Overlay className="bg-gray-500/40 fixed inset-0" />
 
-              <AlertDialog.Content className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[450px] bg-gray-600 p-5 rounded-md border border-gray-300 flex flex-col justify-between gap-4">
+              <AlertDialog.Content className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] sm:w-[450px] bg-gray-600 p-5 rounded-md border border-gray-300 flex flex-col justify-between gap-4">
                 <AlertDialog.Title className="text-white font-bold text-lg">
                   Você deseja mesmo excluir esse item?
                 </AlertDialog.Title>

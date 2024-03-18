@@ -31,7 +31,7 @@ export function SelectCategory({ nameField }: SelectCategoryProps) {
             value={value}
           >
             <Select.Trigger
-              className={`h-10 w-[160px] text-sm leading-none text-gray-100 data-[placeholder]:text-gray-200 outline-none rounded-md bg-gray-400 border border-1 p-3 flex items-center justify-between gap-3 focus:border-purple-light ${isSelectOpened ? 'border-purple-light' : 'border-gray-300'}`}
+              className={`h-10 w-[140px] sm:w-[160px] text-sm leading-none text-gray-100 data-[placeholder]:text-gray-200 outline-none rounded-md bg-gray-400 border border-1 p-3 flex items-center justify-between gap-3 focus:border-purple-light ${isSelectOpened ? 'border-purple-light' : 'border-gray-300'}`}
             >
               <Select.Value placeholder="Selecione"></Select.Value>
               <Select.Icon>
@@ -57,7 +57,7 @@ export function SelectCategory({ nameField }: SelectCategoryProps) {
 
                     return (
                       <Select.Item
-                        className={`bg-gray-400 outline-none border border-1 border-gray-300 flex items-center justify-between p-3 cursor-pointer text-sm text-gray-100 data-[state=checked]:bg-gray-300 hover:bg-gray-300 focus:bg-gray-300 focus:border-purple-light w-[160px] ${borderRadius}`}
+                        className={`bg-gray-400 outline-none border border-1 border-gray-300 flex items-center justify-between p-3 cursor-pointer text-sm text-gray-100 data-[state=checked]:bg-gray-300 hover:bg-gray-300 focus:bg-gray-300 focus:border-purple-light w-[140px] sm:w-[160px] ${borderRadius}`}
                         key={category.value}
                         value={category.value}
                       >

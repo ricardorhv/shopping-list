@@ -73,7 +73,7 @@ export function EditModal({ itemId }: EditModalProps) {
         <Dialog.Portal>
           <Dialog.Overlay className="bg-gray-500/40 fixed inset-0" />
 
-          <Dialog.Content className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[450px] h-[300px] bg-gray-600 p-5 rounded-md text-gray-200 border border-gray-300 flex flex-col justify-between gap-3">
+          <Dialog.Content className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] sm:w-[450px] h-[300px] bg-gray-600 p-5 rounded-md text-gray-200 border border-gray-300 flex flex-col justify-between gap-3">
             <Dialog.Title className="text-lg font-bold text-gray-100">
               Editar item
             </Dialog.Title>

@@ -5,4 +5,4 @@
 - [X] Criar função para deletar item
 - [X] Criar função para alterar item
 - [X] Definir como item checado quando usuário clicar no checkbox
-- [] Salvar dados no LS
+- [X] Salvar dados no LS

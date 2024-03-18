@@ -55,7 +55,7 @@ export function AddNewItemForm() {
     <FormProvider {...methods}>
       <form
         onSubmit={handleSubmit(handleAddNewItem)}
-        className="grid grid-cols-[1fr_160px_40px] grid-rows-2 sm:grid-rows-1 sm:grid-cols-[1fr_150px_160px_40px] items-end gap-3 text-gray-100 leading-none text-sm"
+        className="grid grid-cols-[1fr_140px_40px] grid-rows-2 gap-3 sm:grid-rows-1 sm:grid-cols-[1fr_150px_160px_40px] items-end text-gray-100 leading-none text-sm"
       >
         <ItemInput className="col-span-3 sm:col-span-1" />
 
