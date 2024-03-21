@@ -14,7 +14,7 @@ export function QuantityInput({ nameField }: QuantityInputProps) {
 
       <div className="flex">
         <input
-          className="h-10 text-sm leading-none text-gray-100 rounded-s-md outline-none border border-1 border-gray-300 bg-gray-500 p-3 focus:border-purple-light w-[60px] sm:w-[80px]"
+          className="h-10 text-sm leading-none text-gray-100 rounded-s-md rounded-e-none outline-none border border-1 border-gray-300 bg-gray-500 p-3 focus:border-purple-light w-[60px] sm:w-[80px]"
           id="quantity"
           type="number"
           defaultValue={1}
